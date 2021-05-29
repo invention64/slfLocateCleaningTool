@@ -28,7 +28,7 @@ import tkinter as tk
 import selenium.webdriver
 from selenium.webdriver.common.keys import Keys
 import csv
-
+import webbrowser
 
 in_data = []
 out_data = []
@@ -45,7 +45,13 @@ def on_open(): # starts cleaner
     global driver
 
     if not driver:
-        driver = selenium.webdriver.Firefox()
+        try:
+            driver = selenium.webdriver.Firefox()
+        except:
+            webbrowser.open("https://github.com/mozilla/geckodriver/releases")
+            print("Please install gecko driver for your system from this repository")
+            print("If geckodriver is installed on your system, report this error to a maintainer: ", sys.exc_info()[0])
+            exit()
         driver.get('https://www.google.com/maps/')
         next_loc()
 
