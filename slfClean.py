@@ -34,6 +34,9 @@ in_data = []
 out_data = []
 driver = None
 seachbox = '//*[@id="searchboxinput"]'
+if len(sys.argv) < 2:
+    print("Please provide a file as an argument")
+    exit()
 filename = sys.argv[1]
 
 
